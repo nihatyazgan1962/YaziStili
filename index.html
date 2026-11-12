@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Akıllı İçerik Üretim ve Paylaşım Platformu - Tipografi, renk paleti, çerçeveleme ve yapay zeka destekli içerik stüdyosu.">
+  <title>Akıllı İçerik Üretim ve Paylaşım Platformu</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome / Feather Style Vector Icons (SVG Based) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Space Background Glow Orbs -->
+  <div class="ambient-glow orb-1" aria-hidden="true"></div>
+  <div class="ambient-glow orb-2" aria-hidden="true"></div>
+  <div class="ambient-glow orb-3" aria-hidden="true"></div>
+  <div class="space-particles" aria-hidden="true"></div>
+
+  <!-- Showcase Header Banner -->
+  <header class="showcase-header">
+    <div class="brand-title-wrap">
+      <h1 class="brand-title">
+        Akıllı İçerik Üretim<br>
+        <span class="sub-brand">vektim <span class="ai-spark-icon">✦</span> Paylaşım Platformu</span>
+      </h1>
+    </div>
+    
+    <div class="header-actions">
+      <button id="openGlobalPreviewBtn" class="btn-gradient-preview" type="button" title="Tam Ekran Önizleme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>ÖNİZLEME</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Showcase Container -->
+  <main class="showcase-stage">
+    
+    <!-- Floating Quick Control Toolbar (Dock Panel) -->
+    <aside class="floating-dock" id="floatingDock" aria-label="Hızlı Tasarım Araç Çubuğu">
+      <!-- Section: YAZI YAZMA -->
+      <div class="dock-group" id="groupTypography">
+        <span class="dock-label">YAZI YAZMA</span>
+        <div class="dock-actions">
+          <button type="button" class="dock-btn active" id="btnStyleRegular" title="Normal Yazı">
+            <span class="text-icon">T</span>
+          </button>
+          <button type="button" class="dock-btn" id="btnStyleItalic" title="İtalik Yazı">
+            <span class="text-icon italic">I</span>
+          </button>
+          <button type="button" class="dock-btn" id="btnStyleGlow" title="Neon Gölgeli / Kabartmalı">
+            <span class="text-icon glow">T</span>
+          </button>
+        </div>
+        <span class="dock-sublabel">Yazı Yazma</span>
+      </div>
+
+      <div class="dock-divider"></div>
+
+      <!-- Section: DÜZENLEME -->
+      <div class="dock-group" id="groupEdit">
+        <span class="dock-label">DÜZENLEME</span>
+        <div class="dock-actions">
+          <button type="button" class="dock-btn" id="btnToolEdit" title="Metni Düzenle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </button>
+          <button type="button" class="dock-btn" id="btnToolClear" title="Biçimi Temizle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          </button>
+          <button type="button" class="dock-btn highlight-ai" id="btnToolAI" title="Yapay Zeka Sihirli İyileştirici">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="dock-divider"></div>
+
+      <!-- Section: RENK PALETİ -->
+      <div class="dock-group color-dock-group" id="groupPalette">
+        <span class="dock-label">RENK PALETİ</span>
+        <div class="palette-wrapper">
+          <!-- Gradient Bar Selector -->
+          <div class="gradient-spectrum-bar" id="gradientSpectrumBar" title="Hazır Gradyan Geçişini Değiştir"></div>
+          <!-- Swatches -->
+          <div class="color-swatches" id="colorSwatches">
+            <button type="button" class="swatch active" data-color="#00f2fe" style="--swatch-c: #00f2fe;" title="Neon Cyan"></button>
+            <button type="button" class="swatch" data-color="#4facfe" style="--swatch-c: #4facfe;" title="Okyanus Mavisi"></button>
+            <button type="button" class="swatch" data-color="#7f00ff" style="--swatch-c: #7f00ff;" title="Mor"></button>
+            <button type="button" class="swatch" data-color="#e100ff" style="--swatch-c: #e100ff;" title="Elektrik Pembe"></button>
+            <button type="button" class="swatch" data-color="#ff007f" style="--swatch-c: #ff007f;" title="Neon Fuşya"></button>
+            <button type="button" class="swatch" data-color="#ff7b00" style="--swatch-c: #ff7b00;" title="Sıcak Turuncu"></button>
+            <button type="button" class="swatch" data-color="#00ff88" style="--swatch-c: #00ff88;" title="Neon Zümrüt"></button>
+            <label class="swatch custom-swatch" title="Özel Renk Seç">
+              <input type="color" id="customColorPicker" value="#00f2fe">
+              <span>+</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="dock-divider"></div>
+
+      <!-- Section: YAZI STİLİ -->
+      <div class="dock-group" id="groupFonts">
+        <span class="dock-label">YAZI STİLİ</span>
+        <div class="font-selectors">
+          <div class="custom-select-wrapper">
+            <select id="titleFontSelect" aria-label="Başlık Fontu">
+              <option value="'Montserrat', sans-serif" selected>Montserrat ⌄</option>
+              <option value="'Poppins', sans-serif">Poppins ⌄</option>
+              <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta ⌄</option>
+              <option value="'Space Grotesk', sans-serif">Space Grotesk ⌄</option>
+              <option value="'Playfair Display', serif">Playfair Display ⌄</option>
+            </select>
+          </div>
+          <div class="custom-select-wrapper">
+            <select id="bodyFontSelect" aria-label="Gövde Fontu">
+              <option value="'Open Sans', sans-serif" selected>Open Sans ⌄</option>
+              <option value="'Inter', sans-serif">Inter ⌄</option>
+              <option value="'Montserrat', sans-serif">Montserrat ⌄</option>
+              <option value="'Poppins', sans-serif">Poppins ⌄</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="dock-divider"></div>
+
+      <!-- Section: ÇERÇEVELEME -->
+      <div class="dock-group" id="groupFrame">
+        <span class="dock-label">ÇERÇEVELEME</span>
+        <div class="frame-controls">
+          <div class="frame-control-item" id="ctrlShadow">
+            <button type="button" class="frame-icon-btn active" id="btnToggleGlow" title="Gölge & Dış Işıma">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="10" height="10" rx="1"/></svg>
+            </button>
+            <span class="ctrl-caption">Gölge</span>
+          </div>
+
+          <div class="frame-control-item" id="ctrlThickness">
+            <button type="button" class="frame-icon-btn" id="btnToggleThickness" title="Çerçeve Kalınlığı">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/></svg>
+            </button>
+            <span class="ctrl-caption">Kalınlık</span>
+          </div>
+
+          <div class="frame-control-item" id="ctrlCorner">
+            <button type="button" class="frame-icon-btn" id="btnToggleCorner" title="Köşe Kavis Derecesi">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="6"/></svg>
+            </button>
+            <span class="ctrl-caption">Köşe</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dock-divider"></div>
+
+      <!-- Section: PAYLAŞIM -->
+      <div class="dock-group" id="groupShare">
+        <span class="dock-label">PAYLAŞIM</span>
+        <div class="social-share-buttons">
+          <button type="button" class="social-btn facebook" id="btnShareFB" title="Facebook'ta Paylaş">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </button>
+          <button type="button" class="social-btn twitter" id="btnShareX" title="X (Twitter)'ta Paylaş">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </button>
+          <button type="button" class="social-btn instagram" id="btnShareIG" title="Instagram Şablonu Oluştur">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </button>
+          <button type="button" class="social-btn youtube" id="btnShareYT" title="YouTube / Video Küçük Resmi">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#fff"/></svg>
+          </button>
+          <button type="button" class="social-btn download" id="btnDownloadImage" title="Görsel Olarak İndir (PNG)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile Device Mockup Container -->
+    <div class="phone-frame-container">
+      <div class="phone-bezel">
+        <!-- Phone Speaker & Camera (Dynamic Island) -->
+        <div class="phone-island">
+          <div class="island-camera"></div>
+          <div class="island-sensor"></div>
+        </div>
+
+        <!-- Phone Inner Screen -->
+        <div class="phone-screen" id="phoneScreen">
+          
+          <!-- Top App Bar -->
+          <nav class="app-top-bar">
+            <button class="nav-icon-btn" id="btnMobileBack" type="button" aria-label="Geri Dön">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+
+            <div class="draft-pill-status" id="draftStatusBadge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>DRAFT</span>
+            </div>
+
+            <div class="top-bar-right">
+              <button class="phone-preview-btn" id="btnInnerPreview" type="button">ÖNİZLEME</button>
+              <button class="nav-icon-btn" id="btnMobileSettings" type="button" aria-label="Ayarlar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </button>
+            </div>
+          </nav>
+
+          <!-- Main Post Title (Editable) -->
+          <div class="post-title-section">
+            <h2 class="post-main-title" id="postMainTitle" contenteditable="true" spellcheck="false" title="Başlığı düzenlemek için tıklayın">
+              Dijital Dünyanızın<br>Mimarisi
+            </h2>
+          </div>
+
+          <!-- Dynamic Live Card Area -->
+          <div class="content-card-outer glow-active" id="liveCardContainer">
+            <!-- Neon Border Wrapper -->
+            <div class="card-neon-border" id="cardNeonBorder">
+              <div class="card-inner-surface">
+                
+                <!-- Mini Rich Text Toolbar -->
+                <div class="mini-rich-toolbar" id="miniRichToolbar">
+                  <button type="button" class="rich-btn" data-command="bold" title="Kalın (Ctrl+B)">
+                    <strong>A</strong>
+                  </button>
+                  <button type="button" class="rich-btn" data-command="italic" title="İtalik (Ctrl+I)">
+                    <em>I</em>
+                  </button>
+                  <button type="button" class="rich-btn" data-command="underline" title="Altı Çizili (Ctrl+U)">
+                    <u>U</u>
+                  </button>
+                  <button type="button" class="rich-btn" id="btnToggleCase" title="Büyük/Küçük Harf">
+                    <span>Aa</span>
+                  </button>
+                  <div class="mini-toolbar-sep"></div>
+                  <button type="button" class="rich-btn" data-command="insertUnorderedList" title="Madde İmleri">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                  </button>
+                  <button type="button" class="rich-btn" data-command="insertOrderedList" title="Numaralı Liste">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><path d="M4 6h1v4"/><path d="M4 10h2"/></svg>
+                  </button>
+                  <button type="button" class="rich-btn" id="btnInsertImage" title="Görsel / Medya Ekle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  </button>
+                  <button type="button" class="rich-btn" id="btnCycleAlign" title="Hizalama Değiştir">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="3" y2="18"/></svg>
+                  </button>
+                </div>
+
+                <!-- Rich Editable Body -->
+                <div class="card-editable-body" id="cardEditableBody" contenteditable="true" spellcheck="false">
+                  Dijital Dünyanızın Mimarisi. Dijital Dünyanızın Mimarisi adlı Akıllı İçerik Editörü ile; Renk Paleti, Yazı Stilleri (Montserrat & Open Sans), Çerçeveleme, Gölge, Kalınlık ve Köşe estetikleriyle göz alıcı paylaşımlar üretin ve tek tıkla sosyal medyada yayınlayın.
+                </div>
+
+                <!-- Optional Embedded Media Container -->
+                <div class="card-media-preview hidden" id="cardMediaPreview">
+                  <img id="cardMediaImg" src="" alt="Yüklenen Görsel">
+                  <button type="button" class="btn-remove-media" id="btnRemoveMedia">✕</button>
+                </div>
+
+                <input type="file" id="mediaFileInput" accept="image/*" class="hidden">
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation Bar -->
+          <nav class="app-bottom-nav">
+            <button type="button" class="nav-tab active" id="tabHome">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span>Anasayfa</span>
+            </button>
+            <button type="button" class="nav-tab" id="tabLibrary">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              <span>Kütüphane</span>
+            </button>
+            <button type="button" class="nav-tab" id="tabTemplates">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              <span>Şablonlar</span>
+            </button>
+            <button type="button" class="nav-tab" id="tabSettings">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <span>Ayarlar</span>
+            </button>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Fullscreen Social Preview & Export Dialog (Modern HTML5 Native Dialog) -->
+  <dialog class="modal-dialog" id="previewModal" closedby="any">
+    <div class="modal-backdrop-blur"></div>
+    <div class="modal-card">
+      <header class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge">CANLI ÖNİZLEME</span>
+          <h3>Sosyal Medya Paylaşım Stüdyosu</h3>
+        </div>
+        <button type="button" class="btn-close-modal" id="btnClosePreview" aria-label="Kapat">✕</button>
+      </header>
+
+      <div class="modal-body">
+        <!-- Aspect Ratio Selector -->
+        <div class="aspect-tabs">
+          <button type="button" class="aspect-btn active" data-aspect="1:1">Kare (1:1 Instagram)</button>
+          <button type="button" class="aspect-btn" data-aspect="9:16">Dikey Hikaye (9:16 Reels)</button>
+          <button type="button" class="aspect-btn" data-aspect="16:9">Yatay (16:9 X / LinkedIn)</button>
+        </div>
+
+        <!-- Rendered Card Preview Canvas -->
+        <div class="preview-render-wrap" id="previewRenderWrap">
+          <div class="preview-render-card" id="previewRenderCard">
+            <h2 id="modalPreviewTitle">Dijital Dünyanızın Mimarisi</h2>
+            <div class="preview-render-divider"></div>
+            <div id="modalPreviewBody">
+              Dijital Dünyanızın Mimarisi adlı Akıllı İçerik Editörü ile; Renk Paleti, Yazı Stilleri, Çerçeveleme, Gölge ve Köşe estetikleriyle göz alıcı paylaşımlar üretin.
+            </div>
+            <div class="preview-card-watermark">✦ Akıllı İçerik Üretim Platformu</div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="modal-footer">
+        <button type="button" class="btn-secondary" id="btnCopyText">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Metni Kopyala
+        </button>
+        <button type="button" class="btn-primary" id="btnDownloadRendered">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Yüksek Çözünürlüklü PNG İndir
+        </button>
+      </footer>
+    </div>
+  </dialog>
+
+  <!-- AI Magic Polish Dialog -->
+  <dialog class="modal-dialog" id="aiModal" closedby="any">
+    <div class="modal-backdrop-blur"></div>
+    <div class="modal-card modal-compact">
+      <header class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge ai-badge">✦ AI ASİSTAN</span>
+          <h3>Akıllı İçerik Sihirbazı</h3>
+        </div>
+        <button type="button" class="btn-close-modal" id="btnCloseAI" aria-label="Kapat">✕</button>
+      </header>
+      <div class="modal-body">
+        <p class="ai-desc">İçeriğinizi tek tıkla profesyonel bir tona ve dikkat çekici görsel metne dönüştürün:</p>
+        <div class="ai-prompts-grid">
+          <button type="button" class="ai-prompt-card" data-tone="tech">
+            <strong>🚀 Teknoloji & Dijital Mimari</strong>
+            <span>Gelecek odaklı, yenilikçi ve güçlü bir ton.</span>
+          </button>
+          <button type="button" class="ai-prompt-card" data-tone="luxury">
+            <strong>✨ Minimal & Lüks Vizyon</strong>
+            <span>Zarif, prestijli ve sofistike tasarım dili.</span>
+          </button>
+          <button type="button" class="ai-prompt-card" data-tone="growth">
+            <strong>📈 Motivasyon & Başarı</strong>
+            <span>Eyleme geçirici, dinamik ve ilham verici.</span>
+          </button>
+          <button type="button" class="ai-prompt-card" data-tone="creative">
+            <strong>🎨 Yaratıcı İçerik & Sanat</strong>
+            <span>Özgün anlatım, çarpıcı metaforlar ve renkler.</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Templates Dialog -->
+  <dialog class="modal-dialog" id="templatesModal" closedby="any">
+    <div class="modal-backdrop-blur"></div>
+    <div class="modal-card modal-compact">
+      <header class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge">TASARIM ŞABLONLARI</span>
+          <h3>Hazır Tipografi & Renk Temaları</h3>
+        </div>
+        <button type="button" class="btn-close-modal" id="btnCloseTemplates" aria-label="Kapat">✕</button>
+      </header>
+      <div class="modal-body">
+        <div class="templates-grid">
+          <div class="theme-preset-card" data-theme="cyber">
+            <div class="theme-badge" style="background: linear-gradient(135deg, #00f2fe, #7f00ff);"></div>
+            <div class="theme-info">
+              <strong>Siber Neon</strong>
+              <span>Montserrat + Open Sans (Cyan & Mor)</span>
+            </div>
+            <button type="button" class="btn-apply-theme">Uygula</button>
+          </div>
+          <div class="theme-preset-card" data-theme="sunset">
+            <div class="theme-badge" style="background: linear-gradient(135deg, #ff0844, #ffb199);"></div>
+            <div class="theme-info">
+              <strong>Gün Batımı Ateşi</strong>
+              <span>Poppins + Inter (Turuncu & Fuşya)</span>
+            </div>
+            <button type="button" class="btn-apply-theme">Uygula</button>
+          </div>
+          <div class="theme-preset-card" data-theme="emerald">
+            <div class="theme-badge" style="background: linear-gradient(135deg, #00f5a0, #00d9f5);"></div>
+            <div class="theme-info">
+              <strong>Zümrüt Biyosistem</strong>
+              <span>Space Grotesk + Plus Jakarta (Zümrüt Yeşili)</span>
+            </div>
+            <button type="button" class="btn-apply-theme">Uygula</button>
+          </div>
+          <div class="theme-preset-card" data-theme="luxury">
+            <div class="theme-badge" style="background: linear-gradient(135deg, #e6c875, #ff7b00);"></div>
+            <div class="theme-info">
+              <strong>Zarif Altın</strong>
+              <span>Playfair Display + Montserrat (Altın Işıma)</span>
+            </div>
+            <button type="button" class="btn-apply-theme">Uygula</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Settings Dialog -->
+  <dialog class="modal-dialog" id="settingsModal" closedby="any">
+    <div class="modal-backdrop-blur"></div>
+    <div class="modal-card modal-compact">
+      <header class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-badge">UYGULAMA AYARLARI</span>
+          <h3>Ayarlar & Bilgiler</h3>
+        </div>
+        <button type="button" class="btn-close-modal" id="btnCloseSettings" aria-label="Kapat">✕</button>
+      </header>
+      <div class="modal-body">
+        <!-- HAKKINDA: NİHAT YAZGAN KARTI -->
+        <div class="about-author-card" style="display: flex; align-items: center; gap: 16px; padding: 18px; border-radius: 20px; background: linear-gradient(135deg, rgba(30, 38, 72, 0.9), rgba(20, 25, 50, 0.9)); border: 1.5px solid rgba(0, 242, 254, 0.5); box-shadow: 0 0 25px rgba(0, 242, 254, 0.2); margin-bottom: 20px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #00f2fe, #7f00ff); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; color: #fff; box-shadow: 0 0 15px rgba(127, 0, 255, 0.6); flex-shrink: 0;">NY</div>
+          <div>
+            <div style="font-size: 11px; font-weight: 800; color: #00f2fe; letter-spacing: 1.5px; text-transform: uppercase;">HAKKINDA:</div>
+            <div style="font-size: 20px; font-weight: 800; color: #ffffff; letter-spacing: 0.8px; margin: 2px 0;">NİHAT YAZGAN</div>
+            <div style="font-size: 12px; color: rgba(255, 255, 255, 0.7); font-weight: 500;">Akıllı İçerik Üretim ve Paylaşım Platformu</div>
+          </div>
+        </div>
+
+        <div class="settings-options-list">
+          <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: rgba(22, 28, 54, 0.6); border-radius: 12px; margin-bottom: 10px; border: 1px solid rgba(255, 255, 255, 0.08);">
+            <div>
+              <div style="font-weight: 600; font-size: 14px; color: #fff;">Ultra HD Görsel Çıktısı</div>
+              <div style="font-size: 11px; color: rgba(255, 255, 255, 0.5);">Görselleri maksimum 4K netlikte dışa aktar</div>
+            </div>
+            <span style="color: #00f2fe; font-size: 18px;">✓</span>
+          </div>
+
+          <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: rgba(22, 28, 54, 0.6); border-radius: 12px; margin-bottom: 10px; border: 1px solid rgba(255, 255, 255, 0.08);">
+            <div>
+              <div style="font-weight: 600; font-size: 14px; color: #fff;">Otomatik Taslak Kaydı</div>
+              <div style="font-size: 11px; color: rgba(255, 255, 255, 0.5);">Değişiklikler anlık olarak saklanır</div>
+            </div>
+            <span style="color: #00f2fe; font-size: 18px;">●</span>
+          </div>
+
+          <div class="setting-item" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: rgba(22, 28, 54, 0.6); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08);">
+            <div>
+              <div style="font-weight: 600; font-size: 14px; color: #fff;">Sürüm</div>
+              <div style="font-size: 11px; color: rgba(255, 255, 255, 0.5);">v1.0.0 Pro Edition</div>
+            </div>
+            <span style="color: #00f2fe; font-size: 11px; font-weight: bold;">GÜNCEL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
